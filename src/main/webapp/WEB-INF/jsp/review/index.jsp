@@ -3,9 +3,6 @@
 <%@ page import = "java.util.*" %>    
 <%@ page import = "com.web.review.model.*" %>    
 <%@ page import = "com.web.review.controller.*" %>  
-
-  
-    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -26,6 +23,7 @@
 					<th>제목</th>
 					<th colspan="2">내용</th>
 					<th>작성일</th>
+					<th>조회수</th>
 				</tr>
 			</thead>
 		<tbody>
@@ -36,7 +34,7 @@
 			%>
 			<tr>
 				<td><%= data.getReview_id() %></td>
-				<td><%= data.getReview_title() %></td>
+				<td><a href="/review_detail?review_id=<%=data.getReview_id() %>"><%= data.getReview_title() %></a></td>
 				<td class="con"><%= data.getReview_context() %></td>
 				<td>
 					<a href="/update">수정</a>

@@ -11,6 +11,9 @@ public class ReviewDTO {
 	// 기본 생성자
 	public ReviewDTO() {}
 	
+	public ReviewDTO(int review_id) {
+		this.review_id = review_id;
+	}
 	
 	public ReviewDTO(String review_title, String review_context) {
 		this.review_title = review_title;

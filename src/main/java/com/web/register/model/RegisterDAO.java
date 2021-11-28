@@ -21,7 +21,7 @@ public class RegisterDAO {
 		}
 
 		public RegisterDTO select(String userid) {
-			String query = "SELECT * FROM JOINUSERS"
+			String query = "SELECT * FROM SEMI_USERS"
 					+ " WHERE USERID = '" + userid + "'";
 			RegisterDTO data = null;
 			
@@ -56,8 +56,8 @@ public class RegisterDAO {
 		}
 
 		public boolean insert(RegisterDTO dto) {
-			String query = "INSERT INTO JOINUSERS VALUES("
-					+ "JOINUSERS_SEQ.NEXTVAL,"
+			String query = "INSERT INTO SEMI_USERS VALUES("
+					+ "SEMI_USERS_SEQ.NEXTVAL,"
 					+ "'" + dto.getPassword() + "',"
 					+ "'" + dto.getUsername() + "',"
 					+ "'" + dto.getEmail() + "',"
