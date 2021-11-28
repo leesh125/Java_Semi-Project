@@ -57,7 +57,7 @@ public class RegisterController extends HttpServlet {
 		    	
 		    		}else {
 		    			service.createRegiser();
-		    			response.sendRedirect("/welcome"); //가입완료되면 여기로 이동
+		    			response.sendRedirect("/"); //가입완료되면 여기로 이동
 		    		}
 		    			}else { 
 			    			rp.forward(request, response);

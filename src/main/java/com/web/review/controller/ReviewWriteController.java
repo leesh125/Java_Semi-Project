@@ -22,7 +22,7 @@ public class ReviewWriteController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String view ="/WEB-INF/review/re_write.jsp";
+		String view ="/WEB-INF/jsp/review/re_write.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 		

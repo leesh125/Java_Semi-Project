@@ -15,7 +15,7 @@
 					<tr>
 						<th colspan="2" style="text-align:center;">review 작성</th>
 					</tr>
-					
+
 				<tbody>
 					<tr><td>
 						<input type="text" name="review_title" placeholder="리뷰 제목" maxlength="50" >
@@ -31,14 +31,14 @@
 					<!-- ReviewDTO로 다운 캐스팅 시켜주기 -->
 					<textarea placeholder="리뷰 내용" name="review_context" maxlength="2048" style="height:350px;" >
 						<%= dto.getReview_context() %>
-					
+
 					</textarea>
 					</td>
-					
+
 					</tr>
 				</tbody>	
 				</table>	
 				<input type="submit" value="리뷰게시" />
 	</form>
 </body>
-</html>
+</html> 

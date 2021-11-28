@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="com.web.review.model.*" %>     
-    
-    
-    
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -18,7 +18,7 @@
 					<tr>
 						<th colspan="2" style="text-align:center;">review 수정</th>
 					</tr>
-					
+
 				<tbody>
 				<% 
 						ReviewDTO dto = new ReviewDTO();
@@ -32,14 +32,14 @@
 					</td></tr>
 					<tr>
 					<td>
-					
+
 					<!-- ReviewDTO로 다운 캐스팅 시켜주기 -->
 					<textarea placeholder="리뷰 내용" name="review_context" maxlength="2048" style="height:350px;" >
 						<%= dto.getReview_context() %>
-					
+
 					</textarea>
 					</td>
-					
+
 					</tr>
 				</tbody>	
 				</table>	
@@ -49,4 +49,4 @@
 
 
 </body>
-</html>
+</html> 

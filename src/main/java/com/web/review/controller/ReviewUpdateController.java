@@ -21,7 +21,7 @@ public class ReviewUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String update = "/WEB-INF/review/update.jsp";
+		String update = "/WEB-INF/jsp/review/update.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(update);
 		rd.forward(request, response);
 	

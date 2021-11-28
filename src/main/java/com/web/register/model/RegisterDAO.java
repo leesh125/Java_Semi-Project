@@ -3,7 +3,8 @@ package com.web.register.model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.web.dbconn.OracleCloudConnect;
+import com.jspweb.dbconn.OracleCloudConnect;
+
 
 public class RegisterDAO {
 		

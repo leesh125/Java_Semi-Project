@@ -33,7 +33,7 @@ public class ReviewController extends HttpServlet {
 		// 뷰에서 사용할 수 있게 전달
 		request.setAttribute("datas", datas);
 		
-		String view ="/repage/review.jsp";
+		String view ="/WEB-INF/jsp/review/index.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 		
@@ -46,7 +46,7 @@ public class ReviewController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		
-		String view ="/WEB-INF/review/re_write.jsp";
+		String view ="/WEB-INF/jsp/review/re_write.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 
