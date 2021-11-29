@@ -34,6 +34,7 @@ public class ReviewDAO {
 			dto.setReview_title(res.getString("review_title"));;
 			dto.setReview_context(res.getString("review_context"));;
 			dto.setReview_date(res.getDate("review_date"));;
+			dto.setViews(res.getInt("views"));
 			datas.add(dto);
 		}
 		
@@ -43,6 +44,7 @@ public class ReviewDAO {
 		return datas;
 	}
 	
+	// 리뷰 상세조회를 위해(id 별)
 	public ReviewDTO select(int review_id) throws SQLException {
 		// while로 가져온 값을 datas에 담기
 		ReviewDTO dto = new ReviewDTO();
@@ -59,6 +61,7 @@ public class ReviewDAO {
 			dto.setReview_title(res.getString("review_title"));;
 			dto.setReview_context(res.getString("review_context"));;
 			dto.setReview_date(res.getDate("review_date"));;
+			dto.setViews(res.getInt("views"));;
 		}
 		res.close();
 		occ.close();
@@ -66,7 +69,20 @@ public class ReviewDAO {
 		return dto;
 	}
 	
-	
+	public boolean UpdateViews(int review_id) throws SQLException {
+		String query = "UPDATE SEMI_REVIEW"
+				+ " SET VIEWS = VIEWS+1"
+				+ " WHERE REVIEW_ID = " + review_id;
+		
+		int res = -1;
+		
+		res = occ.insertQuery(query);
+		
+		if (res == 1) {
+			return true;
+		}
+		return false;
+	}
 	
 	// 데이터 베이스 추가
 	public boolean insert(ReviewDTO dto) throws SQLException {
@@ -74,7 +90,8 @@ public class ReviewDAO {
 				+ "SEMI_REVIEW_SEQ.NEXTVAL,"
 				+ "'" + dto.getReview_title() +"',"
 				+ "'" + dto.getReview_context()+ "',"
-				+ "SYSDATE"
+				+ "SYSDATE,"
+				+ dto.getViews()
 				+ ")";
 		int res = occ.insertQuery(query);
 		
@@ -84,7 +101,42 @@ public class ReviewDAO {
 		return false;
     }
 	
+	// 리뷰 수정하기
+	public boolean updateReivew(ReviewDTO dto) {
+		String query = "UPDATE SEMI_REVIEW"
+				+ "  SET"
+				+ "    REVIEW_TITLE = '" + dto.getReview_title() + "',"
+				+ "    REVIEW_CONTEXT = '" + dto.getReview_context() +"'"
+				+ "  WHERE REVIEW_ID = " + dto.getReview_id();
+		
+		int res = 0;
+		
+		try {
+			res = occ.updateQuery(query);
+			occ.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("update 실패! - dao에서");
+		}
+    	return res == 1 ? true : false;
+		
+	}
 	
+	// 리뷰 삭제하기
+	public boolean delete(ReviewDTO dto) {
+		String query = "DELETE FROM SEMI_REVIEW"
+				+ " WHERE REVIEW_ID = " + dto.getReview_id() + "";
+
+		int res = 0;
+		try {
+			res = occ.deleteQuery(query);
+			occ.close();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return res == 1 ? true : false;
+	}
 	
    public void commit() throws SQLException {
     	occ.commit();
@@ -94,13 +146,12 @@ public class ReviewDAO {
     	occ.rollback();
     }
 
+    public void close() throws SQLException {
+    	occ.connectionClose();
+    }
 
-	
+
 	
 	
 	
 }
-
-		    
-	
-

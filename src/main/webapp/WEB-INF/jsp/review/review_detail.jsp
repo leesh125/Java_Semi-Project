@@ -19,11 +19,13 @@
 	<div>
 		<a href="/update">수정</a>
 		<button >삭제</button>
+		<a href="/review">목록으로</a>
 	</div>
 	<p><%= datas.getReview_id() %></p>
 	<p><%= datas.getReview_context() %></p>
 	<p><%= datas.getReview_title() %></p>
 	<p><%= datas.getReview_date() %></p>
+	<p><%= datas.getViews() %></p>
 	<%		
 			
 		}else{	

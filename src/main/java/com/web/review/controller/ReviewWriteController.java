@@ -47,6 +47,7 @@ public class ReviewWriteController extends HttpServlet {
 			response.sendRedirect("/review");
 		}else {
 			//false면 저장 실패면 창 다시 띄우기
+			System.out.println("실패!@");
 			request.setAttribute("init", dto);	
 			request.setAttribute("datas" , service.getReviewList());
 			response.sendRedirect("/review_write");	

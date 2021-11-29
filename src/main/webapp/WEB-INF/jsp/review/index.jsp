@@ -37,10 +37,14 @@
 				<td><a href="/review_detail?review_id=<%=data.getReview_id() %>"><%= data.getReview_title() %></a></td>
 				<td class="con"><%= data.getReview_context() %></td>
 				<td>
-					<a href="/update">수정</a>
-					<button >삭제</button>
+					<a href="/update?review_id=<%=data.getReview_id() %>">수정</a>
+					<form action="/delete" method="post">
+						<input type="hidden"name="review_id" value="<%= data.getReview_id() %>">
+						<button type="submit">삭제</button>
+					</form>	
 				</td>
 				<td><%= data.getReview_date() %></td>
+				<td><%= data.getViews() %></td>
 			</tr>				
 			<%		
 				}
@@ -50,9 +54,11 @@
 		</tbody>	
 		
 		<!-- 리뷰 작성 페이지로 넘어가기 -->
-		<div><a href="/review_write" ><button>리뷰 작성</button></a></div>	
+		
 		</table>	
-	
+		
 	</form>
+	
+		<div><a href="/review_write" >리뷰 작성</a></div>	
 </body>
 </html>
