@@ -2,7 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>    
 <%@ page import = "com.web.review.model.*" %>    
-<%@ page import = "com.web.review.controller.*" %>  
+<%@ page import = "com.web.review.controller.*" %> 
+<%@ page import="java.io.File" %>
+<!-- 파일 이름이 동일한게 나오면 자동으로 다른걸로 바꿔주고 그런 행동 해주는것 -->
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<!-- 실제로 파일 업로드 하기 위한 클래스 -->
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,16 +18,51 @@
 </head>
 <body>
 	<!-- 리뷰 table -->
-	<h4>Review</h4>
+	<h2>Review</h2>
 	<div><hr></div>
+	
+	<!-- 조회수 TOP 1 데이터 출력 -->
+	<h4>1등 리뷰</h4>
+	<p>조회수가 같을 경우 가장 최근에 올라온 리뷰가 우선순위 입니다.</p>
+	<% 
+		ReviewDTO top_views = (ReviewDTO) request.getAttribute("top_views");
+		if(top_views.getReview_date() != null) {
+	%>
+		<div>
+			<div>
+				<img src="../upload/<%=top_views.getReview_fileName()%>" style="width:200px; height:200px;"/>
+			</div>
+			<div>
+				번호 :<%= top_views.getReview_id() %>
+			</div>
+			<div>
+				제목 : <%= top_views.getReview_title()%>
+			</div>
+			<div>
+				내용 : <%= top_views.getReview_context() %>
+			</div>
+			<div>
+				작성일 : <%= top_views.getReview_date()%>
+			</div>
+			<div>
+				조회수 : <%= top_views.getViews() %>
+			</div>
+		</div>
+		<br>
+		<hr>
+	<%
+		}
+	%>
+	<!-- 리뷰 리스트 조회 -->
 	<% 
    		if(session.getAttribute("login_name") != null) {
     %>	
-	<form action="/review" method="post">	
+	<form action="/review" method="post" enctype="multipart/form-data">	
 		<table class="review_tb">
 			<thead>
 				<tr>
 					<th>번호</th>
+					<th>이미지</th>
 					<th>제목</th>
 					<th>내용</th>
 					<th>작성일</th>
@@ -42,6 +83,7 @@
 			
 			<tr>
 				<td><%= data.getReview_id() %></td>
+				<td><img src="../upload/<%=data.getReview_fileName()%>" style="width:200px; height:200px;"/>
 				<td><a href="/review_detail?review_id=<%=data.getReview_id() %>"><%= data.getReview_title() %></a></td>
 				<td class="con"><%= data.getReview_context() %></td>
 				
@@ -52,7 +94,7 @@
 					if(username.equals(data_username)){
 				%>
 				<td>
-					<a href="/update?review_id=<%=data.getReview_id() %>">수정</a>/
+					<a href="/update?review_id=<%=data.getReview_id() %>">수정</a>
 					<a href="/delete?review_id=<%=data.getReview_id() %>">삭제</a>
 				</td>
 				<%

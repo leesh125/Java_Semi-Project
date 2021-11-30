@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.web.review.model.ReviewDTO;
 import com.web.review.model.ReviewService;
@@ -22,10 +23,12 @@ public class ReviewDetailController extends HttpServlet {
 		String id = request.getParameter("review_id");
 		int id_int = Integer.parseInt(id); // string을 int로 (id는 int이다)
 		
+		HttpSession session = request.getSession();
+		String username = (String)session.getAttribute("login_name");
 		
 		if(id != null) {
-			ReviewDTO dto = new ReviewDTO(id_int);
-			request.setAttribute("datas", service.getReviewId(id_int));
+			ReviewDTO dto = new ReviewDTO(id_int, username);
+			request.setAttribute("datas", service.getReviewInfo(id_int,username));
 			String review_detail = "/WEB-INF/jsp/review/review_detail.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(review_detail);
 			rd.forward(request, response);

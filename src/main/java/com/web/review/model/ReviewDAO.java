@@ -36,6 +36,7 @@ public class ReviewDAO {
 			dto.setReview_date(res.getDate("review_date"));;
 			dto.setViews(res.getInt("views"));
 			dto.setUsername(res.getString("username"));
+			dto.setReview_fileName(res.getString("review_fileName"));
 			datas.add(dto);
 		}
 		
@@ -43,6 +44,38 @@ public class ReviewDAO {
 		occ.close();
 		
 		return datas;
+	}
+
+	// 조회수가 가장 높은 데이터 하나만 반환
+	public ReviewDTO selectTopViews() throws SQLException {
+		ReviewDTO dto = new ReviewDTO();
+		// db에서 review 테이블 조회
+		String query = "SELECT * "
+					   + "FROM"
+					   + "("
+					   + "	SELECT *"
+					   + "	  FROM SEMI_REVIEW"
+					   + "   ORDER BY VIEWS DESC, REVIEW_DATE DESC"
+					   + ")"
+					   + "WHERE ROWNUM <= 1";
+		ResultSet res = occ.sendQuery(query);
+		
+		
+		//db에서 각각의 컬럼 값 가져오기
+		while(res.next()) {
+			dto.setReview_id(res.getInt("review_id"));;
+			dto.setReview_title(res.getString("review_title"));;
+			dto.setReview_context(res.getString("review_context"));;
+			dto.setReview_date(res.getDate("review_date"));;
+			dto.setViews(res.getInt("views"));
+			dto.setUsername(res.getString("username"));
+			dto.setReview_fileName(res.getString("review_fileName"));
+		}
+		
+		res.close();
+		occ.close();
+		
+		return dto;
 	}
 	
 	// 리뷰 상세조회를 위해(id 별)
@@ -63,6 +96,8 @@ public class ReviewDAO {
 			dto.setReview_context(res.getString("review_context"));;
 			dto.setReview_date(res.getDate("review_date"));;
 			dto.setViews(res.getInt("views"));;
+			dto.setUsername(res.getString("username"));
+			dto.setReview_fileName(res.getString("review_fileName"));
 		}
 		res.close();
 		occ.close();
@@ -85,6 +120,22 @@ public class ReviewDAO {
 		return false;
 	}
 	
+	public boolean UpdateViews(int review_id, String username) throws SQLException {
+		String query = "UPDATE SEMI_REVIEW"
+				+ " SET VIEWS = VIEWS+1"
+				+ " WHERE REVIEW_ID = " + review_id
+				+ " AND USERNAME = '" + username + "'";
+		
+		int res = -1;
+		
+		res = occ.insertQuery(query);
+		
+		if (res == 1) {
+			return true;
+		}
+		return false;
+	}
+	
 	// 데이터 베이스 추가
 	public boolean insert(ReviewDTO dto) throws SQLException {
 		String query = "INSERT INTO SEMI_REVIEW VALUES("
@@ -93,7 +144,8 @@ public class ReviewDAO {
 				+ "'" + dto.getReview_context()+ "',"
 				+ "SYSDATE,"
 				+ dto.getViews() + ","
-				+ "'" + dto.getUsername() + "'"
+				+ "'" + dto.getUsername() + "',"
+				+ "'" + dto.getReview_fileName() + "'"
 				+ ")";
 		int res = occ.insertQuery(query);
 		
@@ -109,6 +161,7 @@ public class ReviewDAO {
 	public boolean updateReivew(ReviewDTO dto) {
 		String query = "UPDATE SEMI_REVIEW"
 				+ "  SET"
+				+ "    REVIEW_FILENAME = '" + dto.getReview_fileName() + "',"
 				+ "    REVIEW_TITLE = '" + dto.getReview_title() + "',"
 				+ "    REVIEW_CONTEXT = '" + dto.getReview_context() +"'"
 				+ "  WHERE REVIEW_ID = " + dto.getReview_id();
@@ -153,9 +206,6 @@ public class ReviewDAO {
     public void close() throws SQLException {
     	occ.connectionClose();
     }
-
-
-	
 	
 	
 }

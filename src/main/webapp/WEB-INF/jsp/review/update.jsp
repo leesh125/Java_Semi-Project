@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="com.web.review.model.*" %>     
-
+<%@ page import="java.io.File" %>
+<!-- 파일 이름이 동일한게 나오면 자동으로 다른걸로 바꿔주고 그런 행동 해주는것 -->
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<!-- 실제로 파일 업로드 하기 위한 클래스 -->
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
 
 
 <!DOCTYPE html>
@@ -9,6 +13,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>리뷰 수정</title>
+	<script type="text/javascript" src="/js/reviewScript.js"></script>
 </head>
 <body>
 	<% 
@@ -17,7 +22,7 @@
 			dto = (ReviewDTO)request.getAttribute("datas");
 		}
 	%>
-<form action="/update" method="post">
+	<form action="/update" method="post" enctype="multipart/form-data">
 		<h1>리뷰 수정</h1>
 			<input type="hidden" name="review_id" value="<%= dto.getReview_id() %>">
 			<table style="text-align:center; border:1px solid #dddddd">
@@ -41,6 +46,13 @@
 					</textarea>
 					</td>
 
+					</tr>
+					
+					<tr>
+						<td>	
+						  <input type="file" name="review_fileName" id="image" accept="image/*" onchange="setThumbnail(event);" value=" <%= dto.getReview_fileName() %>"/>
+						  <div id="image_container"></div>
+						</td>
 					</tr>
 				</tbody>	
 				</table>	

@@ -1,9 +1,12 @@
 package com.web.review.model;
 
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ReviewDTO {
 	private int review_id; //글 번호
+	private String review_fileName; // 파일
 	private String review_title =""; // 리뷰 제목
 	private String review_context =""; // 리뷰 내용
 	private Date review_date; // 작성일
@@ -15,6 +18,10 @@ public class ReviewDTO {
 	// 기본 생성자
 	public ReviewDTO() {}
 	
+	public ReviewDTO(int review_id, String username) {
+		this.review_id = review_id;
+		this.username = username;
+	}
 	public ReviewDTO(int review_id) {
 		this.review_id = review_id;
 	}
@@ -33,6 +40,20 @@ public class ReviewDTO {
 		this.review_context = review_context;
 	}
 	
+	public ReviewDTO(String review_fileName, String review_title, String review_context, String username) {
+		this.review_fileName = review_fileName;
+		this.review_title = review_title;
+		this.review_context = review_context;
+		this.username = username;
+	}
+	
+	public ReviewDTO(int review_id,String review_fileName, String review_context, String review_title, String username) {
+		this.review_id = review_id;
+		this.review_fileName = review_fileName;
+		this.review_context = review_context;
+		this.review_title = review_title;
+		this.username = username;
+	}
 	public ReviewDTO(String review_title, String review_context, String username) {
 		this.review_title = review_title;
 		this.review_context = review_context;
@@ -83,5 +104,19 @@ public class ReviewDTO {
 		this.username = username;
 	}
 	
-	
+	public String getReview_fileName() {
+		return review_fileName;
+	}
+
+	public void setReview_fileName(String review_fileName) {
+		this.review_fileName = review_fileName;
+	}
+
+	public void setResultSet(ResultSet res) throws SQLException {
+		this.review_id = res.getInt("review_id");
+		this.review_fileName = res.getString("review_fileName");
+		this.review_title = res.getString("review_title");
+		this.review_context = res.getString("review_context");
+		this.review_date = res.getDate("review_date");
+	}
 }

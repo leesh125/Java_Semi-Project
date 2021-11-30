@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="com.web.review.model.*" %>    
+<%@ page import ="com.web.review.model.*" %>
+<%@ page import="java.io.File" %>
+<!-- 파일 이름이 동일한게 나오면 자동으로 다른걸로 바꿔주고 그런 행동 해주는것 -->
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<!-- 실제로 파일 업로드 하기 위한 클래스 -->
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>리뷰 작성 게시글</title>
+	<meta charset="UTF-8">
+	<title>리뷰 작성 게시글</title>
+	<script type="text/javascript" src="/static/js/reviewScript.js"></script>
 </head>
 <body>
 
-<form action="/review_write" method="post">
+	<form action="/review_write" method="post" enctype="multipart/form-data">
 		<h1>리뷰 작성</h1>
 			<table style="text-align:center; border:1px solid #dddddd">
 					<tr>
@@ -34,7 +41,14 @@
 
 					</textarea>
 					</td>
-
+					</tr>
+					
+					<!-- 이미지 파일 업로드 -->
+					<tr>
+						<td>	
+						  <input type="file" name="review_fileName" id="image" accept="image/*" onchange="setThumbnail(event);" value=" <%= dto.getReview_fileName() %>"/>
+						  <div id="image_container"></div>
+						</td>
 					</tr>
 				</tbody>	
 				</table>	

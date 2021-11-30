@@ -32,6 +32,12 @@ public class ReviewController extends HttpServlet {
 		
 		// 뷰에서 사용할 수 있게 전달
 		request.setAttribute("datas", datas);
+
+		// 조회수가 가장 많은 data 가져오기
+		ReviewDTO top_views = service.getTopViews();
+		
+		// 뷰에서 사용할 수 있게 전달
+		request.setAttribute("top_views", top_views);
 		
 		String view ="/WEB-INF/jsp/review/index.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);

@@ -45,13 +45,42 @@ public class ReviewService {
 		return datas;
 		
 	}
-
 	
+	// 리뷰 리스트중 조회수가 가장 높은 데이터 추출
+	public ReviewDTO getTopViews() {
+		ReviewDTO datas = null;
+		
+		try {
+		    datas = dao.selectTopViews(); // select로 조회
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return datas;
+	}
+
 	// 리뷰 상세조회를 위해
-	public ReviewDTO getReviewId(int review_id) {
+		public ReviewDTO getReviewId(int review_id) {
+			ReviewDTO datas = null;
+			try {
+				if(dao.UpdateViews(review_id)) {
+					dao.commit();
+				}else {
+					dao.rollback();
+				}
+			    datas = dao.select(review_id); // select로 조회
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return datas;
+			
+		}
+		
+		
+	// 리뷰 상세조회를 위해
+	public ReviewDTO getReviewInfo(int review_id, String username) {
 		ReviewDTO datas = null;
 		try {
-			if(dao.UpdateViews(review_id)) {
+			if(dao.UpdateViews(review_id,username)) {
 				dao.commit();
 			}else {
 				dao.rollback();
@@ -107,6 +136,8 @@ public class ReviewService {
 		}
 		return res;
 	}
+
+	
 
 	
 
