@@ -30,7 +30,6 @@ public class RegisterController extends HttpServlet {
 			String password_check = request.getParameter("password_check");
 			
 			RegisterDTO dto = new RegisterDTO(
-					request.getParameter("userid"),
 					request.getParameter("password"),
 					request.getParameter("username"),
 					request.getParameter("email"),
@@ -54,20 +53,19 @@ public class RegisterController extends HttpServlet {
 		    	
 		    		if(service.isDuplicated()) { 
 		    			rp.forward(request, response);
-		    	
+		    			System.out.println("아이디 중복!");
 		    		}else {
 		    			service.createRegiser();
 		    			response.sendRedirect("/"); //가입완료되면 여기로 이동
+		    			System.out.println("회원가입 성공!");
 		    		}
-		    			}else { 
-			    			rp.forward(request, response);
+		    	}else { 
+			    	rp.forward(request, response);
 		    	
-		    			}
-		    			}else {
-
-			    		rp.forward(request, response);
-		    				
-        }
+		   		}
+		    }else {
+		    	rp.forward(request, response);
+		    }
        }
    }
 	

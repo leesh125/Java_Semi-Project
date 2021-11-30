@@ -11,9 +11,7 @@ public class RegisterService {
 	}
 
 	public String isValid() { //필수입력 체크 만약 길이나 특수문자 그런거 더 하고 싶으면 여기에 넣어주면 된다.
-			if(this.dto.getUserid() == null) { 
-				return ("아이디가 입력되지 않았습니다.");
-			}else if(this.dto.getPassword() == null) {
+			if(this.dto.getPassword() == null) {
 				return ("패스워드가 입력되지 않았습니다.");
 			}else if(this.dto.getUsername() == null) {
 				return ("이름이 입력되지 않았습니다.");
@@ -36,7 +34,7 @@ public class RegisterService {
 	public boolean isDuplicated() {
 		//여기서 데이터베이스 쪽 필요 DAO
 		RegisterDAO dao = new RegisterDAO();
-		RegisterDTO data = dao.select(this.dto.getUserid());
+		RegisterDTO data = dao.select(this.dto.getUsername());
 		dao.close();
 		
 		return data != null ? true : false;

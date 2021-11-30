@@ -13,8 +13,10 @@
 <body>
 	<!-- 리뷰 table -->
 	<h4>Review</h4>
-		<div><hr></div>
-		
+	<div><hr></div>
+	<% 
+   		if(session.getAttribute("login_name") != null) {
+    %>	
 	<form action="/review" method="post">	
 		<table class="review_tb">
 			<thead>
@@ -32,6 +34,7 @@
 				if(datas != null) {
 				for(ReviewDTO data: datas){
 			%>
+			
 			<tr>
 				<td><%= data.getReview_id() %></td>
 				<td><a href="/review_detail?review_id=<%=data.getReview_id() %>"><%= data.getReview_title() %></a></td>
@@ -45,7 +48,8 @@
 				</td>
 				<td><%= data.getReview_date() %></td>
 				<td><%= data.getViews() %></td>
-			</tr>				
+			</tr>
+			
 			<%		
 				}
 			}else{	
@@ -60,5 +64,13 @@
 	</form>
 	
 		<div><a href="/review_write" >리뷰 작성</a></div>	
+		<%
+   		} else { // 로그인을 안하면 리뷰목록 조회 안됨
+		%>
+			<h3>리뷰목록을 조회하려면 로그인이 필요합니다.</h3>
+			<a href="/login">로그인</a>
+		<%
+   		}
+		%>
 </body>
 </html>

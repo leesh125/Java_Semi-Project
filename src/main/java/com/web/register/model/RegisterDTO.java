@@ -9,7 +9,15 @@ package com.web.register.model;
 		private int height;
 		private int weight;
 		
-		
+		public RegisterDTO(String password, String username, String email, String gender, int height, int weight) {
+			this.password = password;
+			this.username = username;
+			this.email = email;
+			this.gender = gender;
+			this.height = height;
+			this.weight = weight;
+		}
+
 		public RegisterDTO () {
 			this("","","","","");
 		}
@@ -75,6 +83,10 @@ package com.web.register.model;
 		public void setWeight(int weight) {
 			this.weight = weight;
 		}
+
+	
+		
+		
 	}
 
 

@@ -20,9 +20,9 @@ public class RegisterDAO {
 			}
 		}
 
-		public RegisterDTO select(String userid) {
+		public RegisterDTO select(String username) {
 			String query = "SELECT * FROM SEMI_USERS"
-					+ " WHERE USERID = '" + userid + "'";
+					+ " WHERE USERNAME = '" + username + "'";
 			RegisterDTO data = null;
 			
 			try {
