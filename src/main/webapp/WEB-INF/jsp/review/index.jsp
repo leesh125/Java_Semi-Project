@@ -23,47 +23,64 @@
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
-					<th colspan="2">내용</th>
+					<th>내용</th>
 					<th>작성일</th>
 					<th>조회수</th>
+					<th>수정/삭제</th>
 				</tr>
 			</thead>
 		<tbody>
 			<%
+				String username = (String)session.getAttribute("login_name"); 
+				System.out.println("로그인 한 유저 : "+username);
 				List<ReviewDTO> datas = (List<ReviewDTO>) request.getAttribute("datas");
 				if(datas != null) {
 				for(ReviewDTO data: datas){
+					String data_username = data.getUsername();
+					
 			%>
 			
 			<tr>
 				<td><%= data.getReview_id() %></td>
 				<td><a href="/review_detail?review_id=<%=data.getReview_id() %>"><%= data.getReview_title() %></a></td>
 				<td class="con"><%= data.getReview_context() %></td>
-				<td>
-					<a href="/update?review_id=<%=data.getReview_id() %>">수정</a>
-					<form action="/delete" method="post">
-						<input type="hidden"name="review_id" value="<%= data.getReview_id() %>">
-						<button type="submit">삭제</button>
-					</form>	
-				</td>
+				
 				<td><%= data.getReview_date() %></td>
 				<td><%= data.getViews() %></td>
-			</tr>
-			
-			<%		
+				
+				<% 
+					if(username.equals(data_username)){
+				%>
+				<td>
+					<a href="/update?review_id=<%=data.getReview_id() %>">수정</a>/
+					<a href="/delete?review_id=<%=data.getReview_id() %>">삭제</a>
+				</td>
+				<%
+				}else{
+				%>
+					<td>권한 없음</td>
+				<%
 				}
-			}else{	
-			}
-			%>			
+				%>
+			</tr>
+				
+		<%		
+				}
+		%>
 		</tbody>	
-		
-		<!-- 리뷰 작성 페이지로 넘어가기 -->
-		
 		</table>	
-		
 	</form>
-	
-		<div><a href="/review_write" >리뷰 작성</a></div>	
+		
+		
+		<div><a href="/review_write" >리뷰 작성</a></div>
+		<%
+			}else{ // 아무린 리뷰가 없을때	
+		%>
+		<h1>리뷰를 작성해보세요!</h1>
+		<div><a href="/review_write" >리뷰 작성</a></div>
+		<%		
+			}
+		%>	
 		<%
    		} else { // 로그인을 안하면 리뷰목록 조회 안됨
 		%>

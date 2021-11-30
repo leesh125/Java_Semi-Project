@@ -18,11 +18,6 @@ public class ReviewDeleteController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String review_id = request.getParameter("review_id");
 		int review_id_int = Integer.parseInt(review_id);
 		
@@ -36,6 +31,11 @@ public class ReviewDeleteController extends HttpServlet {
 		}else {
 			response.sendRedirect("../review");
 		}
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 
 	}
 

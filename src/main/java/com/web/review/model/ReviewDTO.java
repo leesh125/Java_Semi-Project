@@ -8,8 +8,9 @@ public class ReviewDTO {
 	private String review_context =""; // 리뷰 내용
 	private Date review_date; // 작성일
 	private int views; // 조회수
+	private String username; // 
 	
-	
+
 
 	// 기본 생성자
 	public ReviewDTO() {}
@@ -32,6 +33,12 @@ public class ReviewDTO {
 		this.review_context = review_context;
 	}
 	
+	public ReviewDTO(String review_title, String review_context, String username) {
+		this.review_title = review_title;
+		this.review_context = review_context;
+		this.username = username;
+	}
+
 	public int getReview_id() {
 		return this.review_id;
 	}
@@ -66,6 +73,14 @@ public class ReviewDTO {
 
 	public void setViews(int views) {
 		this.views = views;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.web.review.model.ReviewDTO;
 import com.web.review.model.ReviewService;
@@ -35,11 +36,15 @@ public class ReviewWriteController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
+		HttpSession session = request.getSession();
+//		session.setAttribute("login_name", dto.getUsername());
+		
+		String user_name = (String) session.getAttribute("login_name");; 
 		String review_title = request.getParameter("review_title");
 		String review_context = request.getParameter("review_context");
 		
 		// dto에서 제목,내용 값 가져오기
-		ReviewDTO dto = new ReviewDTO(review_title, review_context);
+		ReviewDTO dto = new ReviewDTO(review_title, review_context, user_name);
 		
 		// 서비스에서 요청해 데이터 가져오기
 		if(service.add(dto)) {

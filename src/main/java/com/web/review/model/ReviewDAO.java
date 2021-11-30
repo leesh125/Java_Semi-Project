@@ -35,6 +35,7 @@ public class ReviewDAO {
 			dto.setReview_context(res.getString("review_context"));;
 			dto.setReview_date(res.getDate("review_date"));;
 			dto.setViews(res.getInt("views"));
+			dto.setUsername(res.getString("username"));
 			datas.add(dto);
 		}
 		
@@ -91,7 +92,8 @@ public class ReviewDAO {
 				+ "'" + dto.getReview_title() +"',"
 				+ "'" + dto.getReview_context()+ "',"
 				+ "SYSDATE,"
-				+ dto.getViews()
+				+ dto.getViews() + ","
+				+ "'" + dto.getUsername() + "'"
 				+ ")";
 		int res = occ.insertQuery(query);
 		
@@ -100,6 +102,8 @@ public class ReviewDAO {
 		}
 		return false;
     }
+	
+	// review 테이블에 userid 외래키 값 수정
 	
 	// 리뷰 수정하기
 	public boolean updateReivew(ReviewDTO dto) {
