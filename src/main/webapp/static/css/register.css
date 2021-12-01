@@ -1,0 +1,86 @@
+* {
+    margin: 0 5 5 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.joinheader-1 > h1 {
+   
+    margin-bottom: 10px;
+    color : gray;
+    text-align: center;
+    
+}
+
+.joinheader-2> h3 {
+    margin-top : 10px;
+    color : lightsteelblue;
+    font-weight :500;
+    text-align: center;
+    
+}
+
+.joinmiddle {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding : auto;  
+    text-align: center;
+}
+
+
+.joinmiddile {
+    text-align: center;
+}
+
+.input-form{
+    height :auto;
+    border-style: none;
+}
+
+.input-form > label {
+    text-align: left;
+    display: inline-block;
+    width: 50%;
+    margin-left: 500px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color :cornflowerblue;
+    font-weight :bolder;
+    font-size: small;
+}
+
+.inline-input {
+    border-style: none;
+}
+
+.inline-input > input {
+    display: inline-block;
+    width: 15%;
+    height : 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 12px 0;
+    border: 1px solid #9c9c9c;
+    background-color: white;
+}
+
+.inline-input > select {
+    border-style: solid;
+    width: calc(100% - 1205px); 
+    height : 25px; 
+}
+
+.inline-input > span {
+    float : center;
+    margin-left: -33px;
+}
+
+.mute{
+    color : gray;
+}
+
+
+
+
+
+
