@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+body {
+    justify-content: center;
+  }
+
+.modal {
+	width: 750px;
+	margin: 70px auto;
+}
+
+.modal-body {
+  display: flex;
+  padding: 0;
+  border-radius: 3rem;
+  font-family: 'PT Sans', sans-serif;
+  width: 750px;
+  height: 100%;
+}
+
+.modal-content {
+  border-radius: 4rem;
+  width: 100%;
+  -webkit-box-shadow: -1px -2px 42px -19px rgba(0,0,0,0.74);
+-moz-box-shadow: -1px -2px 42px -19px rgba(0,0,0,0.74);
+box-shadow: -1px -2px 25px -19px rgba(0,0,0,0.74);
+}
+.modal-content h1, .modal-content h2, .modal-content h3 {
+    text-align: center;
+}
+.modal-content h1 {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 2em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.modal-content h2 {
+    font-size: 1.1em;
+}
+.modal-content h3 {
+  font-size: .8em;
+  letter-spacing: 2px;
+}
+form {
+    font-size: .8em;
+}
+.column {
+  flex: 50%;
+  padding: 10px;
+}
+
+.column#main {
+  flex: 75%;
+  padding: 50px;
+  margin-top: 30px;
+  margin-left: 15px;
+}
+
+#secondary {
+  background-color: lavender;
+  border-radius: 0 4rem 4rem 0;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+#main .form-control {
+  display: block;
+  border-radius: 0;
+  font-size: .9em;
+  margin-top: 5px;
+}
+
+.form-control {
+  display: block;
+  width: 91%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; 
+}
+
+.form-select{
+  width: 100%;
+  height: 52px;
+}
+
+.btn {
+  text-transform: uppercase;
+  border-radius: .5rem;
+  width: 200px;
+  height: 50px;
+  padding: .150rem .75rem;
+  margin: 30px auto;
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing: 2px;
+}
+
+.btn-primary {
+  border-color: #fcb6e1;
+  background: linear-gradient(to right, #fcb6e1 0%,#eb6cfc 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcb6e1', endColorstr='#eb6cfc',GradientType=1 ); /* IE6-9 */
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 2px 2px #fa8cd0;
+  background: linear-gradient(to right, #eb6cfc 0%,#fcb6e1 99%);
+  transition: 2s;
+}
+
+#main .btn-primary {
+  width: 100%;
+}
+#secondary .btn-primary {
+  background: #f8f9fa4f;
+  color: #000;
+}
+.modal-body label {
+  margin-bottom: 0;
+}
+
+.sec-content {
+  margin-top: 85%;
+}
+
+.height-weight {
+  display: flex;
+}
+
+.height-div{
+  margin-right: 5px;
+}
+
+.weight-div{
+  margin-left: 5px;
+}
+
+.height-inp{
+  width: 82%;
+}
+
+.weight-inp{
+  width: 82%;
+}
+
+.not-regist-div{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.not-register-span {
+  height: 30px;
+  line-height: 30px;
+  font-weight: 500;
+  color: #1919f1;
+  font-size: 14px;
+}
+
+.not-register-span:hover{
+  text-shadow: #9898ff 1px 0 10px;
+  color: #3333cc;
+  transition-duration: 1s;
+}
+
+.bubbly-button {
+   font-family: 'Helvetica', 'Arial', sans-serif;
+   display: inline-block;
+   width: 100%;
+   height: 50px;
+   font-size: 1.2em;
+   font-weight: 600;
+   padding: 1em 2em;
+   margin-top: 30px;
+   margin-bottom: 22px;
+   -webkit-appearance: none;
+   appearance: none;
+   background-color: #a0a0eb;
+   color: rgb(75, 24, 192);
+   border-radius: 4px;
+   border: none;
+   cursor: pointer;
+   position: relative;
+   transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+   box-shadow: 0 2px 25px #e6e6fa;
+}
+ .bubbly-button:focus {
+   outline: 0;
+}
+ .bubbly-button:before, .bubbly-button:after {
+   position: absolute;
+   content: '';
+   display: block;
+   width: 140%;
+   height: 100%;
+   left: -20%;
+   z-index: -1000;
+   transition: all ease-in-out 0.5s;
+   background-repeat: no-repeat;
+}
+.bubbly-button:before {
+ display: none;
+ top: -75%;
+ background-image: radial-gradient(circle, #a0a0eb 20%, transparent 20%), radial-gradient(circle, transparent 20%, #8d8deb 20%, transparent 30%), radial-gradient(circle, #7c7ce7 20%, transparent 20%), radial-gradient(circle, #5d5de6 20%, transparent 20%), radial-gradient(circle, transparent 10%, #7c7ce7 15%, transparent 20%), radial-gradient(circle, #9c9cf7 20%, transparent 20%), radial-gradient(circle, #7c7ce7 20%, transparent 20%), radial-gradient(circle, #7c7ce7 20%, transparent 20%), radial-gradient(circle, #7c7ce7 20%, transparent 20%);
+ background-size: 8% 8%, 14% 14%, 12% 12%, 14% 14%, 9% 9%, 12% 12%, 12% 12%, 8% 8%, 12% 12%;
+}
+.bubbly-button:after {
+ display: none;
+ bottom: -75%;
+ background-image: radial-gradient(circle, #a0a0eb 20%, transparent 20%), radial-gradient(circle, #8d8deb 20%, transparent 20%), radial-gradient(circle, transparent 10%, #7c7ce7 15%, transparent 20%), radial-gradient(circle, #5d5de6 20%, transparent 20%), radial-gradient(circle, #7c7ce7 20%, transparent 20%), radial-gradient(circle, #9c9cf7 20%, transparent 20%), radial-gradient(circle, #7c7ce7 20%, transparent 20%);
+ background-size: 10% 10%, 14% 14%, 12% 12%, 14% 14%, 14% 14%, 8% 8%, 14% 14%;
+}
+.bubbly-button:active {
+ transform: scale(0.9);
+ background-color: #6363be;
+ box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+}
+ .bubbly-button.animate:before {
+   display: block;
+   animation: topBubbles ease-in-out 0.75s forwards;
+}
+ .bubbly-button.animate:after {
+   display: block;
+   animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+ @keyframes topBubbles {
+   0% {
+     background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+   50% {
+     background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+  }
+   100% {
+     background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+     background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+ @keyframes bottomBubbles {
+   0% {
+     background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+   50% {
+     background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+   100% {
+     background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+     background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+
+/* 회원이 아닐경우 회원가입 창으로 가는 링크 */
+.link {
+  height: 30px;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+  display: flex;
+}
+
+/* Hide extra text */
+.mask {
+  position: relative;
+  padding: 0;
+  height: 20px;
+  overflow: hidden;
+}
+
+.link-container {
+  transition: transform 0.4s ease;
+}
+
+.title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: blue;
+  line-height: 18px;
+  transition: transform 0.4s ease;
+}
+
+.link-title1 {
+  transform-origin: right center;
+}
+
+.link-title2 {
+  transform-origin: left center;
+  transform: rotate(20deg);
+}
+
+.link-icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #f8f8ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.icon {
+  display: block;
+  position: absolute;
+  transition: transform 0.4s ease;
+  fill: blue;
+}
+
+.icon:nth-child(2) {
+  transform: translate(-40px);
+}
+
+/* Hover Action*/
+
+/* Move up two texts (20px = font-size) */
+.link:hover .link-container {
+  transform: translateY(-20px);
+}
+
+/* Rotate texts a little bit */
+.link:hover .link-title1 {
+  transform: rotate(20deg);
+}
+
+.link:hover .link-title2 {
+  transform: rotate(0);
+}
+
+/* Move arrows to right */
+.link:hover .icon:first-child {
+  transform: translate(40px);
+}
+
+.link:hover .icon:nth-child(2) {
+  transform: translate(0px);
+}

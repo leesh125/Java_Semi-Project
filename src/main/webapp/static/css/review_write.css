@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+
+#review{
+   position: absolute;
+    font-size: 30px;
+    top: 16%;
+    left: 30%;
+    font-weight: lighter;
+    color: #696969;
+}
+
+::placeholder{
+   font-size:12px;
+}
+
+
+/* 리뷰 박스 */
+.table{
+   position: absolute;
+   margin-top: 100px;
+    font-size: 30px;
+    top: 22%;
+    left: 29.5%;
+    font-weight: lighter;
+    color: #696969;
+    box-shadow: 1px 7px 22px -9px rgb(145 140 145 / 53%);
+    border: 1px solid #D3D3D3;
+    width: 37%;
+    height: 71%;
+    border-radius: 10px;
+    text-overflow: ellipsis;
+    object-fit: cover;
+}
+
+/*포토 박스*/
+.table2{
+   box-shadow: 1px 7px 22px -9px rgb(145 140 145 / 53%);
+    border: 1px solid #D3D3D3;
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    left: 119%;
+    border-radius: 10px;
+}
+
+
+
+
+/* 리뷰 제목 */
+#review_title{
+   border: 1px solid #A9A9A9;
+    border-radius: 6px;
+    position: absolute;
+    width: 85%;
+    left: 7%;
+    height: 11%;
+    top: 7%;
+    padding-left: 3%;
+}
+
+#review_title:focus {
+    outline:0.5px solid #FFC0CB;
+}
+
+/* 리뷰 내용 */
+#review_context{
+    border: 1px solid #A9A9A9;
+    border-radius: 6px;
+    position: absolute;
+    top: 24%;
+    left: 8%;
+    width: 81.5%;
+    height: 58%;
+    padding: 2%;
+    resize: none; /* 택스트 내용 크기 고정*/
+}
+
+#review_context:focus {
+    outline:0.5px solid #FFC0CB;
+}
+
+
+/* 사진 첨부 */
+.file{
+    position: absolute;
+    top: 115%;
+    font-size: 17px;
+    cursor: pointer;
+    color: #e77b8b;
+    font-weight: lighter;
+    z-index: 1;
+    width: 69px;
+    left: 37%;
+    
+}
+
+
+
+/* 첨부 파일  기존 첨부파일 디자인 없애기*/
+.file input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    
+}
+
+
+/*리뷰 작성 버튼
+*/
+ #write_btn{
+   background-color: #ffffff;
+    width: 13%;
+    position: absolute;
+    top: 91%;
+    left: 77%;
+    font-size: 16px;
+    color: #e77b8b;
+    border: 0px solid;
+    font-weight: lighter;
+}
+ 
+ /* 돌아가기 */
+ 
+ #back-review{
+   position: absolute;
+    font-size: 16px;
+    top: 91%;
+    font-weight: lighter;
+    color: #e77b8b;
+    width: 12%;
+    height: 20px;
+    text-align: center;
+    border: 0px solid;
+    padding: 2px;
+    left: 72px;
+}
+
+ a{
+    text-decoration: none;
+    color: #e77b8b;
+ }
+ 
+ #write_btn:hover{
+    color:#e77b8b;
+   -webkit-box-shadow: 0px 0px 7px 2px #FFB6C1; 
+   box-shadow: 0px 0px 7px 2px #FFB6C1;
+   border-radius: 11px;
+   transition: 0.3s;
+ }
+ 
+ #back-review:hover{
+    color:#e77b8b;
+   -webkit-box-shadow: 0px 0px 7px 2px #FFB6C1; 
+   box-shadow: 0px 0px 7px 2px #FFB6C1;
+   border-radius: 11px;
+   transition: 0.3s;
+ }
+
+#back-review:focus{
+   outline:0px;
+   }
+
+#image:hover{
+   color:#e77b8b;
+   -webkit-box-shadow: 0px 0px 7px 2px #FFB6C1; 
+   box-shadow: 0px 0px 7px 2px #FFB6C1;
+   border-radius: 11px;
+   transition: 0.3s;
+}
+
+/*
+파일 첨부시 이미지 크기 조절
+*/
+
+img:not(.logo_header){
+    bottom: 65px;
+    width: 276px;
+    position: absolute;
+    height: 299px;
+    left: -102px;
+    border-radius: 6px;
+}
+
+#photo{
+   position: absolute;
+    left: 160%;
+    top: -14%;
+}
+
+
+#table3{
+    height: 296px;
+    position: absolute;
+    width: 275px;
+    left: 125%;
+    top: 6%;
+    border: 1px solid #A9A9A9;
+    border-radius: 6px;
+}

@@ -14,63 +14,33 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Review</title>
+	<%@ include file ="/module/head.jsp" %>
+	<link type="text/css" rel="stylesheet" href="/static/css/reviewbox.css">
 	<script type="text/javascript" src="/js/reviewScript.js"></script>
 </head>
-<body>
-	<!-- 리뷰 table -->
-	<h2>Review</h2>
-	<div><hr></div>
+<body class="modal-open" style="padding-right:16px;">
+	<jsp:include page="/module/header.jsp"></jsp:include>
 	
-	<!-- 조회수 TOP 1 데이터 출력 -->
-	<h4>1등 리뷰</h4>
-	<p>조회수가 같을 경우 가장 최근에 올라온 리뷰가 우선순위 입니다.</p>
-	<% 
-		ReviewDTO top_views = (ReviewDTO) request.getAttribute("top_views");
-		if(top_views.getReview_date() != null) {
-	%>
-		<div>
-			<div>
-				<img src="../upload/<%=top_views.getReview_fileName()%>" style="width:200px; height:200px;"/>
-			</div>
-			<div>
-				번호 :<%= top_views.getReview_id() %>
-			</div>
-			<div>
-				제목 : <%= top_views.getReview_title()%>
-			</div>
-			<div>
-				내용 : <%= top_views.getReview_context() %>
-			</div>
-			<div>
-				작성일 : <%= top_views.getReview_date()%>
-			</div>
-			<div>
-				조회수 : <%= top_views.getViews() %>
-			</div>
-		</div>
-		<br>
-		<hr>
-	<%
-		}
-	%>
+   <!-- 검색바 -->
+   <div id="review_img">
+      <a href="/review"><img src="/static/img/review.png"></a>
+   </div>
+   <div class="search_icon">
+      <input type="search" id="search-bar" maxlength="28">
+      <a href="/review"><img id="find-icon" src="/static/img/find-icon.png"></a>
+      <div class="review_write"><a href="/review_write">리뷰 작성</a></div>   
+   </div>
+	   
+   <!-- 리뷰 작성 -->
+   
+   
+	
 	<!-- 리뷰 리스트 조회 -->
 	<% 
    		if(session.getAttribute("login_name") != null) {
     %>	
 	<form action="/review" method="post" enctype="multipart/form-data">	
-		<table class="review_tb">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>이미지</th>
-					<th>제목</th>
-					<th>내용</th>
-					<th>작성일</th>
-					<th>조회수</th>
-					<th>수정/삭제</th>
-				</tr>
-			</thead>
-		<tbody>
+		
 			<%
 				String username = (String)session.getAttribute("login_name"); 
 				System.out.println("로그인 한 유저 : "+username);
@@ -81,7 +51,54 @@
 					
 			%>
 			
-			<tr>
+		<main>
+		      <li class="review_li">   
+		         <!--리뷰 박스 모양  -->
+		         <div class="review_box">
+		            <div class="name-cnt">   
+		               <div id="re-user-name"><%= data.getUsername() %></div>
+		               <div id="view_cnt">조회수: <%= data.getViews() %></div>
+		            </div>     
+		            <a href="/review_detail?review_id=<%=data.getReview_id() %>"><%= data.getReview_title() %>
+		            	<img id="img_size" src="../upload/<%=data.getReview_fileName()%>"/> 
+		            </a>
+		                    
+		               
+		            <!-- 리뷰 제목 css -->
+		            <div id="review_title"><%= data.getReview_title() %></div>   
+		            <hr id="line">
+		            <!-- 리뷰 내용 css -->
+		            <div id="review_context"><%= data.getReview_context() %></div>
+		            
+		            <div class="dud">
+		               <!-- 리뷰 업로드 시간  -->   
+		               <div id="review_date"><%= data.getReview_date() %></div>
+		               <!-- 수정 버튼 -->
+		               
+		                <% 
+							if(username.equals(data_username)){
+						%>
+						
+							<a class="update-btn" href="/update?review_id=<%=data.getReview_id() %>">수정</a>
+							<span id="line2">|</span> 
+							<a href="/delete?review_id=<%=data.getReview_id() %>">삭제</a>
+						
+						<%
+							}else{
+						%>
+								
+						<%
+							}
+		              	%>
+		               
+		            </div>   
+		                     
+		         </div><!-- review_box end -->         
+		      </li>
+		                  
+		</main>   
+			
+			<%-- <tr>
 				<td><%= data.getReview_id() %></td>
 				<td><img src="../upload/<%=data.getReview_fileName()%>" style="width:200px; height:200px;"/>
 				<td><a href="/review_detail?review_id=<%=data.getReview_id() %>"><%= data.getReview_title() %></a></td>
@@ -106,15 +123,19 @@
 				%>
 			</tr>
 				
+		
+		</tbody>	
+		</table> --%>	
 		<%		
 				}
 		%>
-		</tbody>	
-		</table>	
 	</form>
 		
 		
-		<div><a href="/review_write" >리뷰 작성</a></div>
+		
+		
+		
+		<!-- // *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22 -->
 		<%
 			}else{ // 아무린 리뷰가 없을때	
 		%>
@@ -131,5 +152,6 @@
 		<%
    		}
 		%>
+		
 </body>
 </html>
