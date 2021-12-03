@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<div class="header" style="border-bottom: 0; height: 188px;">
+<div class="header">
         <div class="side-menu-bar">
             <!-- 사이드 메뉴바 jsp --> 
             <nav role="navigation">
@@ -12,7 +11,7 @@
                     <span></span>
                 
                 <!-- 사이드 메뉴 종류들 -->
-                    <ul class="side-bar-menu" id="menu" style="padding: 50px 20px 50px 50px; height: 1400px;">
+                    <ul id="menu">
                         <li class="menu-name">TOP</li>
                         <a href="/"><ul>니트</ul></a>
                         <a href="/"><ul>후드티</ul></a>
@@ -42,7 +41,7 @@
         </div>
         <div class="header-img">
             <a href="/">
-                <img class="logo_header" src="/static/img/semi-logo.PNG">
+                <img src="/static/img/gogosing_header.PNG">
             </a>
         </div>
     	<% 
