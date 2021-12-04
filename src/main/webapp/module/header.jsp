@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="header">
+<link rel="stylesheet" href="/static/css/side-bar.css">
+<div class="header" style="border-bottom:none;">
         <div class="side-menu-bar">
             <!-- 사이드 메뉴바 jsp --> 
             <nav role="navigation">
@@ -41,7 +42,7 @@
         </div>
         <div class="header-img">
             <a href="/">
-                <img src="/static/img/gogosing_header.PNG">
+                <img src="/static/img/semi-logo.PNG">
             </a>
         </div>
     	<% 

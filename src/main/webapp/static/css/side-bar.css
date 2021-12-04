@@ -115,17 +115,17 @@
 
   position: absolute;
   top: 0;
-<<<<<<< HEAD
-  height: 1400px;
+
+  height: 2000px;
   width: 200px;
   margin: 0px 0 0 -173px;
   padding: 50px 20px 50px 50px;
-=======
+/* =======
   height: 588px;
   width: 200px;
   margin: 0px 0 0 -173px;
   padding: 50px;
->>>>>>> refs/remotes/origin/main
+>>>>>>> refs/remotes/origin/main */
   padding-top: 125px;
 
   background: #F4E1DE;

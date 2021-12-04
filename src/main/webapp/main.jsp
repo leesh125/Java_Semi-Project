@@ -15,6 +15,7 @@
 	<title>Insert title here</title>
     <%@ include file ="/module/head.jsp" %>
   	<link type="text/css" rel="stylesheet" href="/static/css/main_img.css">
+  	<link rel="stylesheet" href="/static/css/semi-project.css">
 </head>
 <body style="padding-right: 16px;">
 	<jsp:include page="/module/header.jsp"></jsp:include>
